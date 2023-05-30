@@ -12,9 +12,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import net.minidev.json.JSONObject;
-import net.minidev.json.parser.JSONParser;
-
 import com.hospital.web.PatientDto;
 
 public class PatientsTest extends AbstractTest {
@@ -67,9 +64,8 @@ public class PatientsTest extends AbstractTest {
 	}
 
 	private void findById(String uri, Integer id) throws Exception {
-		@SuppressWarnings("deprecation")
-		JSONObject patient = (JSONObject) (new JSONParser()).parse(getResponse(uri + id));
-		assertTrue(patient.getAsNumber("id") == id);
+		PatientData patient = super.mapFromJson('[' + getResponse(uri + id) + ']', PatientData[].class)[0];
+		assertTrue(patient.id == id);
 	}
 
 	private void findPatientByFirstName(String uri, String firstName) throws Exception {
