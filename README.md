@@ -1,4 +1,4 @@
-# hospital
+# hospital microservice
 
 The hospital project uses Spring Boot 3.1.0, Java 20, RESTful, Spring MVC and fast in-memory H2 Database.
 The project implements REST API for patient at hospital and Junit tests for the provided functionalities.
